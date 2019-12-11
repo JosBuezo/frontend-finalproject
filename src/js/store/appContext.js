@@ -22,14 +22,12 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			/**
-			 * EDIT THIS!
-			 * This function is the equivalent to "window.onLoad", it only run once on the entire application lifetime
-			 * you should do your ajax requests or fetch api requests here
-			 *
-			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
-			 *
-			 **/
+			let url = "https://8080-d17183c8-fdc1-4763-88e6-7d25584f6920.ws-us02.gitpod.io/wp-json/sample_api/v1/cars";
+			fetch(url)
+				.then(response => response.json())
+				.then(data => {
+					state.actions.saveToStore(data);
+				});
 		}, []);
 
 		// the initial value for the context its not null anymore, but the current state of this component,

@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { Container, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 import { Context } from "../store/appContext";
 
@@ -7,37 +9,30 @@ import "../../styles/demo.scss";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
-		</div>
+		<Container className="logIn">
+			<h2>Sign Up</h2>
+			<Form className="form">
+				<Col>
+					<FormGroup>
+						<Label>Email</Label>
+						<Input type="email" name="email" id="exampleEmail" placeholder="myemail@email.com" />
+					</FormGroup>
+				</Col>
+				<Col>
+					<FormGroup>
+						<Label for="examplePassword">Password</Label>
+						<Input type="password" name="password" id="examplePassword" placeholder="********" />
+					</FormGroup>
+				</Col>
+				<Col>
+					<FormGroup>
+						<Label for="examplePassword">Confirm Password</Label>
+						<Input type="password" name="password" id="examplePassword" placeholder="********" />
+					</FormGroup>
+				</Col>
+				<Button>Submit</Button>
+			</Form>
+		</Container>
 	);
 };

@@ -1,10 +1,12 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
+import Cars from "../component/cars";
 
 export const Home = () => (
 	<div className="text-center mt-5">
 		<h1>Hello Rigo!</h1>
+		<Cars />
 		<p>
 			<img src={rigoImage} />
 		</p>
